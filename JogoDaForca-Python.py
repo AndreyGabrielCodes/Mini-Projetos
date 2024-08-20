@@ -1,5 +1,4 @@
-lista_palavras = ['CASA', 'SOL', 'LUA', 'MAO', 'RIO', 'AR', 'SOL', 'MAR', 'DIA', 'BOLSA', 'LIVRO', 'CANETA', 'MESA', 'CADEIRA', 'JANELA', 'PORTA', 'FOGAO','GELADEIRA', 'COMPUTADOR','PERSEVERANCA', 'DETERMINACAO', 'CONHECIMENTO', 'CRIATIVIDADE','INTELIGENCIA', 'ESPIRITUALIDADE', 'COMUNICACAO', 'RESPONSABILIDADE', 'INDEPENDENCIA', 'LIBERDADE','CACHORRO', 'GATO', 'PASSARO', 'ELEFANTE', 'TIGRE', 'LEAO', 'MACACO','ARROZ', 'FEIJAO', 'MACARRAO', 'PIZZA', 'BOLO', 'TORTA', 'SORVETE','CABELO', 'OLHO', 'NARIZ', 'BOCA', 'MAO', 'PE', 'CORACAO']
-
+lista_palavras = ['casa', 'apartamento', 'quarto', 'cozinha', 'sala', 'banheiro', 'janela', 'porta', 'sofa', 'cama', 'mesa', 'cadeira', 'armario', 'geladeira', 'fogao', 'televisao', 'computador','smartphone', 'aplicativo', 'internet', 'wifi', 'algoritmo', 'software', 'hardware', 'nuvem', 'pixel', 'bot','receita', 'ingrediente', 'cozinhar', 'assado', 'frito', 'doce', 'salgado', 'temperos', 'gourmet', 'chef','passaporte', 'mala', 'aviao', 'hotel', 'turismo', 'roteiro', 'paisagem', 'cultura', 'salsicao', 'aventura','futebol', 'basquete', 'volei', 'natacao', 'ginastica', 'atleta', 'torcida', 'estadio', 'olimpiadas', 'medalha']
 letras_restantes = 0
 vida = 6
 cadastro_letras_palavra_atual = []
@@ -9,7 +8,7 @@ letras_tentadas = []
 retorno_jogada = 'Partida iniciada'
 status_partida = 0
 palavra_escolhida = ''
-boneco = ['[]','']
+boneco = ['  [ ]','\n /',' |',' \\','\n  /',' \\']
 
 import random
 from os import system
@@ -27,10 +26,12 @@ def main():
         sortear_palavra()
         while(status_partida == 0):
             system('cls')
-            print(f'Vida: {vida}\n')
+            
+            exibe_boneco()
             exibe_palavra()
-            print(f'\n\n| {retorno_jogada}\n')
-            print(palavra_escolhida)
+            print(f'\n\n| {retorno_jogada}')
+            print(f'| Vida: {vida}')
+            exibe_letras_tentadas()
             rodada(input('Digite uma letra: ').upper())
             status_rodada()
         system('cls')
@@ -51,7 +52,7 @@ def status_rodada():
     global status_partida
     if letras_restantes <= 0:
         status_partida = 1
-    elif vida <= 1:
+    elif vida == 0:
         status_partida = 2
     return status_partida
 
@@ -91,7 +92,9 @@ def rodada(letra):
 
     if not letra_valida:
         vida -= 1
-        letras_tentadas.append(letra)
+        boneco.pop(-1)
+        if letra not in letras_tentadas:
+            letras_tentadas.append(letra)
         retorno_jogada = 'Letra não existente !'
         
 def exibe_palavra():
@@ -102,11 +105,22 @@ def exibe_palavra():
     for l in exibicao_letras_palavra_atual:
         print(l, ' ', end='')
 
+def exibe_letras_tentadas():
+    print('| Letras tentadas: ', end='')
+    for i in letras_tentadas:
+        print(i, end=', ')
+    print('\n')
+def exibe_boneco():
+    global vida
+    for b in boneco:
+        print(b, end='')
+    print('\n')
+
 def sortear_palavra():
     global letras_palavra_atual
     global letras_restantes
     global palavra_escolhida
-    palavra_escolhida = random.choice(lista_palavras)
+    palavra_escolhida = random.choice(lista_palavras).upper()
     for i in lista_palavras:
         if i == palavra_escolhida:
             palavra_escolhida = random.choice(lista_palavras)

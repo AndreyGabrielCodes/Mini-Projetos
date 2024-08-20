@@ -1,6 +1,6 @@
 lista_palavras = ['casa', 'apartamento', 'quarto', 'cozinha', 'sala', 'banheiro', 'janela', 'porta', 'sofa', 'cama', 'mesa', 'cadeira', 'armario', 'geladeira', 'fogao', 'televisao', 'computador','smartphone', 'aplicativo', 'internet', 'wifi', 'algoritmo', 'software', 'hardware', 'nuvem', 'pixel', 'bot','receita', 'ingrediente', 'cozinhar', 'assado', 'frito', 'doce', 'salgado', 'temperos', 'gourmet', 'chef','passaporte', 'mala', 'aviao', 'hotel', 'turismo', 'roteiro', 'paisagem', 'cultura', 'salsicao', 'aventura','futebol', 'basquete', 'volei', 'natacao', 'ginastica', 'atleta', 'torcida', 'estadio', 'olimpiadas', 'medalha']
 letras_restantes = 0
-vida = 6
+vida = 7
 cadastro_letras_palavra_atual = []
 exibicao_letras_palavra_atual = []
 nro_jogada = 0
@@ -8,7 +8,7 @@ letras_tentadas = []
 retorno_jogada = 'Partida iniciada'
 status_partida = 0
 palavra_escolhida = ''
-boneco = ['  [ ]','\n /',' |',' \\','\n  /',' \\']
+boneco = ['  [',' ]','\n /',' |',' \\','\n  /',' \\']
 
 import random
 from os import system
@@ -26,7 +26,6 @@ def main():
         sortear_palavra()
         while(status_partida == 0):
             system('cls')
-            
             exibe_boneco()
             exibe_palavra()
             print(f'\n\n| {retorno_jogada}')
@@ -108,8 +107,9 @@ def exibe_palavra():
 def exibe_letras_tentadas():
     print('| Letras tentadas: ', end='')
     for i in letras_tentadas:
-        print(i, end=', ')
+        print(i, end=' ')
     print('\n')
+    
 def exibe_boneco():
     global vida
     for b in boneco:
@@ -139,7 +139,7 @@ def reseta_partida():
     exibicao_letras_palavra_atual.clear()
     letras_tentadas.clear()
     nro_jogada = 0
-    vida = 6
+    vida = 7
     retorno_jogada = 'Partida iniciada'
 
 main()

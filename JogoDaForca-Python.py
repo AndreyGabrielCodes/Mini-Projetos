@@ -57,7 +57,7 @@ def status_rodada():
     global letras_restantes
     global vida
     global status_partida
-    if letras_restantes <= 0:
+    if letras_restantes <= 1:
         status_partida = 1
     elif vida == 0:
         status_partida = 2

@@ -34,12 +34,15 @@ def main():
             rodada(input('Digite uma letra: ').upper())
             status_rodada()
         system('cls')
-        if status_partida == 1:
-            print(f'Parabens, Você ganhou ! - Palavra sorteada: {palavra_escolhida}')
-        else:
-            print(f'Você perdeu ! - Palavra sorteada: {palavra_escolhida}')
-        reiniciar = int(input('\nDeseja iniciar uma nova partida? (1/0)'))
-        if reiniciar == 1:
+        reiniciar = 2
+        while(reiniciar not in ('1','0')):
+            system('cls')
+            if status_partida == 1:
+                print(f'Parabens, Você ganhou ! - Palavra sorteada: {palavra_escolhida}')
+            else:
+                print(f'Você perdeu ! - Palavra sorteada: {palavra_escolhida}')
+            reiniciar = input('\nDeseja iniciar uma nova partida? (1/0)')
+        if reiniciar == '1':
             reseta_partida()
             continue
         else:
@@ -60,42 +63,49 @@ def rodada(letra):
     global nro_jogada
     global retorno_jogada
     global letras_restantes
+    global status_partida
     indices_letra = []
     letra_valida = False
     nro_jogada += 1
-    if letra in letras_tentadas:
-        retorno_jogada = 'Letra já existente !'
+    if letra == palavra_escolhida:
+        status_partida = 1
+    elif len(letra) > 1 or (letra.isalpha()) == False:
+        retorno_jogada = 'Valor invalido !'
         letra_valida = True
-    else:
-        for l in cadastro_letras_palavra_atual:
-            if l == letra:
-                retorno_jogada = 'Letra inserida !'
-                letras_tentadas.append(letra)
-                nro_letras_iguais = 0
-                for i in cadastro_letras_palavra_atual:
-                    if i == letra:
-                        nro_letras_iguais += 1
-                        indices_letra.append(cadastro_letras_palavra_atual.index(i))
-                        indice_atual = cadastro_letras_palavra_atual.index(i)
-                        cadastro_letras_palavra_atual.remove(letra)
-                        cadastro_letras_palavra_atual.insert(indice_atual,'-')
-                if nro_letras_iguais > 1:
+    elif (letra.isalpha())== True:
+        if letra in letras_tentadas:
+            retorno_jogada = 'Letra já existente !'
+            letra_valida = True
+        else:
+            for l in cadastro_letras_palavra_atual:
+                if l == letra:
+                    retorno_jogada = 'Letra inserida !'
+                    letras_tentadas.append(letra)
+                    nro_letras_iguais = 0
                     for i in cadastro_letras_palavra_atual:
                         if i == letra:
-                            indices_letra.append(cadastro_letras_palavra_atual.index(i,indices_letra[0]))
-                print(indices_letra)
-                for i in indices_letra:
-                    exibicao_letras_palavra_atual[i] = exibicao_letras_palavra_atual[i].replace('_',str(letra))
-                    letras_restantes -= 1
-                letra_valida = True
+                            nro_letras_iguais += 1
+                            indices_letra.append(cadastro_letras_palavra_atual.index(i))
+                            indice_atual = cadastro_letras_palavra_atual.index(i)
+                            cadastro_letras_palavra_atual.remove(letra)
+                            cadastro_letras_palavra_atual.insert(indice_atual,'-')
+                    if nro_letras_iguais > 1:
+                        for i in cadastro_letras_palavra_atual:
+                            if i == letra:
+                                indices_letra.append(cadastro_letras_palavra_atual.index(i,indices_letra[0]))
+                    print(indices_letra)
+                    for i in indices_letra:
+                        exibicao_letras_palavra_atual[i] = exibicao_letras_palavra_atual[i].replace('_',str(letra))
+                        letras_restantes -= 1
+                    letra_valida = True
 
-    if not letra_valida:
-        vida -= 1
-        boneco.pop(-1)
-        if letra not in letras_tentadas:
-            letras_tentadas.append(letra)
-        retorno_jogada = 'Letra não existente !'
-        
+        if not letra_valida:
+            vida -= 1
+            boneco.pop(-1)
+            if letra not in letras_tentadas:
+                letras_tentadas.append(letra)
+            retorno_jogada = 'Letra não existente !'
+
 def exibe_palavra():
     global nro_jogada
     if nro_jogada == 0:

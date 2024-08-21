@@ -20,8 +20,8 @@ def main():
     global palavra_escolhida
     global status_partida
     while(True):
-        modo = 2
-        while(modo not in ('1','0')):
+        modo = 0
+        while(modo not in ('1','2')):
             system('cls')
             print('   JOGO DA FORCA\n       MODOS\n1 - Letra aleatória\n2 - Letra escolhida\n')
             modo = input('Deseja jogar em qual modo ? ')
@@ -43,9 +43,9 @@ def main():
         while(reiniciar not in ('1','0')):
             system('cls')
             if status_partida == 1:
-                print(f'Parabens, Você ganhou ! - Palavra sorteada: {palavra_escolhida}')
+                print(f'Parabens, Você ganhou ! - Palavra: {palavra_escolhida}')
             else:
-                print(f'Você perdeu ! - Palavra sorteada: {palavra_escolhida}')
+                print(f'Você perdeu ! - Palavra: {palavra_escolhida}')
             reiniciar = input('\nDeseja iniciar uma nova partida? (1/0)')
         if reiniciar == '1':
             reseta_partida()
@@ -129,7 +129,11 @@ def exibe_boneco():
     global vida
     for b in boneco:
         print(b, end='')
-    print('\n')
+    print(' \n')
+    """if vida > 2 and vida < 6:
+        print(' \n')"""
+    if vida in (1,2):
+        print(' \n')
 
 def palavra_rodada(modo, palavra = ''):
     global letras_palavra_atual

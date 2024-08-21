@@ -19,11 +19,16 @@ def main():
     global retorno_jogada
     global palavra_escolhida
     global status_partida
-    system('cls')
-    print('JOGO DA FORCA')
-    input('ENTER para iniciar o jogo')
     while(True):
-        sortear_palavra()
+        modo = 2
+        while(modo not in ('1','0')):
+            system('cls')
+            print('   JOGO DA FORCA\n       MODOS\n1 - Letra aleatória\n2 - Letra escolhida\n')
+            modo = input('Deseja jogar em qual modo ? ')
+            if modo == '1':
+                palavra_rodada(1)
+            elif modo == '2':
+                palavra_rodada(2,input('Digite a palavra que deseja: ').upper())
         while(status_partida == 0):
             system('cls')
             exibe_boneco()
@@ -126,15 +131,18 @@ def exibe_boneco():
         print(b, end='')
     print('\n')
 
-def sortear_palavra():
+def palavra_rodada(modo, palavra = ''):
     global letras_palavra_atual
     global letras_restantes
     global palavra_escolhida
-    palavra_escolhida = random.choice(lista_palavras).upper()
-    for i in lista_palavras:
-        if i == palavra_escolhida:
-            palavra_escolhida = random.choice(lista_palavras)
-            break
+    if modo == 1:
+        palavra_escolhida = random.choice(lista_palavras).upper()
+        for i in lista_palavras:
+            if i == palavra_escolhida:
+                palavra_escolhida = random.choice(lista_palavras)
+                break
+    else:
+        palavra_escolhida = palavra
     letras_restantes = len(palavra_escolhida)
     for l in palavra_escolhida:
         cadastro_letras_palavra_atual.append(l) 

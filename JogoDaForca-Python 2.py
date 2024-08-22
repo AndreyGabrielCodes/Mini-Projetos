@@ -20,7 +20,6 @@ def main():
         while(obj_rodada['status_partida'] == 0):
             system('cls')
             menu()
-            print(obj_rodada['palavra_escolhida']) #teste
             rodada(input('Digite uma letra: ').upper())
             status_rodada()
         system('cls')
@@ -75,7 +74,6 @@ def rodada(letra):
                         for i in obj_palavra['cadastro_letras_palavra_atual']:
                             if i == letra:
                                 indices_letra.append(obj_palavra['cadastro_letras_palavra_atual'].index(i,indices_letra[0]))
-                    print(indices_letra)
                     for i in indices_letra:
                         obj_palavra['exibicao_letras_palavra_atual'][i] = obj_palavra['exibicao_letras_palavra_atual'][i].replace('_',str(letra))
                         obj_rodada['letras_restantes'] -= 1
@@ -93,15 +91,10 @@ def menu():
         print(b, end='')
     print(' \n')
     #palavra
-    if obj_rodada['nro_jogada'] == 0: 
-        for i in range(0,len(obj_palavra['cadastro_letras_palavra_atual']),1):
-            obj_palavra['exibicao_letras_palavra_atual'].append('_')
     for l in obj_palavra['exibicao_letras_palavra_atual']:
         print(l, ' ', end='')
-    #retorno da jogada
-    print(f'\n\n| ' + obj_rodada['retorno_jogada']) 
-    #vida
-    print(f'| Vida: ' + str(obj_rodada['vida']))
+    #retorno da jogada e vida 
+    print('\n\n| ' + obj_rodada['retorno_jogada'] + '\n| Vida: ' + str(obj_rodada['vida'])) 
     #letras tentadas
     print('| Letras tentadas: ', end='') 
     for i in obj_rodada['letras_tentadas']:
@@ -119,7 +112,9 @@ def palavra_rodada(modo, palavra = ''):
         obj_rodada['palavra_escolhida'] = palavra
     obj_rodada['letras_restantes'] = len(obj_rodada['palavra_escolhida'])
     for l in obj_rodada['palavra_escolhida']:
-        obj_palavra['cadastro_letras_palavra_atual'].append(l) 
+        obj_palavra['cadastro_letras_palavra_atual'].append(l)
+    for i in range(0,len(obj_palavra['cadastro_letras_palavra_atual']),1):
+        obj_palavra['exibicao_letras_palavra_atual'].append('_')
 
 def reseta_partida():
     global obj_rodada

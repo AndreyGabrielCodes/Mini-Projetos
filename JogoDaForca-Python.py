@@ -51,6 +51,7 @@ def main():
             reseta_partida()
             continue
         else:
+            system('cls')
             break
             
 def status_rodada():

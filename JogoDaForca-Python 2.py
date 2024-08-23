@@ -2,6 +2,7 @@ lista_palavras = ['casa', 'apartamento', 'quarto', 'cozinha', 'sala', 'banheiro'
 boneco = ['  [',' ]','\n /',' |',' \\','\n  /',' \\']
 obj_rodada = {'letras_restantes': 0, 'vida': 7, 'nro_jogada': 0, 'letras_tentadas': [], 'status_partida': 0, 'palavra_escolhida': '', 'retorno_jogada':'Partida iniciada'}
 obj_palavra = {'cadastro_letras_palavra_atual':[],'exibicao_letras_palavra_atual':[]}
+palavras_tentadas = []
 
 import random
 from os import system
@@ -102,12 +103,15 @@ def menu():
     print('\n')
 
 def palavra_rodada(modo, palavra = ''):
+    global palavras_tentadas
     if modo == 1:
         obj_rodada['palavra_escolhida'] = random.choice(lista_palavras).upper()
-        for i in lista_palavras:
-            if i == obj_rodada['palavra_escolhida']:
-                obj_rodada['palavra_escolhida'] = random.choice(lista_palavras).upper()
-                break
+        if len(palavras_tentadas) > 0:
+            for i in palavras_tentadas:
+                if i == obj_rodada['palavra_escolhida']:
+                    obj_rodada['palavra_escolhida'] = random.choice(lista_palavras).upper()
+                    break
+        palavras_tentadas.append(palavra).upper()
     else:
         obj_rodada['palavra_escolhida'] = palavra
     obj_rodada['letras_restantes'] = len(obj_rodada['palavra_escolhida'])

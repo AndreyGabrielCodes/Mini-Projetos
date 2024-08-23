@@ -111,7 +111,7 @@ def palavra_rodada(modo, palavra = ''):
                 if i == obj_rodada['palavra_escolhida']:
                     obj_rodada['palavra_escolhida'] = random.choice(lista_palavras).upper()
                     break
-        palavras_tentadas.append(palavra).upper()
+        palavras_tentadas.append(palavra.upper())
     else:
         obj_rodada['palavra_escolhida'] = palavra
     obj_rodada['letras_restantes'] = len(obj_rodada['palavra_escolhida'])

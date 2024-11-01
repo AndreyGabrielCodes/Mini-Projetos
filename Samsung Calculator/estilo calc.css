@@ -36,15 +36,14 @@ main {
   }
   #container-btns {
     display: flex;
-    flex-direction: row;
-    gap: 5px;
+    /*gap:; --DEFINIR O GAP*/ 
   }
   #container-btns-column{
     display: flex;
     flex-direction: column;
   }
   .btn {
-    width: 100px;
+    width:100px;
     height: 100px;
     border-radius: 100px;
     background-color: #201921;

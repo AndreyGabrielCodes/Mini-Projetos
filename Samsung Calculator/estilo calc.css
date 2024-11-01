@@ -1,6 +1,6 @@
 main {
     font-size: 250%;
-    height: 95vh ; /* VH define que o tamanho é 95/100 da viewport*/
+    height: 98vh ;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,14 +13,13 @@ main {
     cursor: pointer;
   }
   #container-calc {
-    --btn_size: 45%;
+    --btn_size_width: calc(100vh * 0.6);
+    --btn_size_height: calc(100vh * 0.6);
     display: flex;
     flex-direction: column;
     background-color: #010101;
     border-radius: 40px;
     padding: 15px;
-    width: var(--btn_size);
-    height: var(--btn_size);
   }
   #container-res {
     display: flex;
@@ -33,19 +32,21 @@ main {
     flex-direction: row;
     justify-content: space-around;
     gap: 70%;
-    margin-top: 7%;
+    margin-top: 8%;
   }
   #container-btns {
     display: flex;
-    flex-flow: wrap;
+    flex-direction: row;
     gap: 5px;
   }
+  #container-btns-column{
+    display: flex;
+    flex-direction: column;
+  }
   .btn {
-    flex: 20%;
-    /*flex: 20%;*/
-    width: calc(var(--btn_size) * 0.5);
-    height: var(--btn_size);
-    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
     background-color: #201921;
     cursor: pointer;
     border: none;

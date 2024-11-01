@@ -1,69 +1,75 @@
 main {
-  font-size: 250%;
-  height: 95vh ;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-a {
-  cursor: pointer;
-}
-#container-calc {
-  --btn_size: 45%;
-  display: flex;
-  flex-direction: column;
-  background-color: #010101;
-  border-radius: 40px;
-  padding: 15px;
-  width: var(--btn_size);
-  height: var(--btn_size);
-}
-#container-res {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  color: red;
-}
-#containter-btns-img {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 70%;
-  margin-top: 7%;
-}
-#container-btns {
-  display: flex;
-  flex-flow: wrap;
-  gap: 5px;
-}
-.btn {
-  width: calc(var(--btn_size) * 0.5);
-  height: calc(var(--btn_size) * 0.8);
-  border-radius: 50px;
-  background-color: #201921;
-  cursor: pointer;
-  border: none;
-  font-size: inherit;
-}
-.btn-num {
-  color: #9fc6ef;
-}
-.btn-c {
-  color: #d93229;
-}
-.btn-simb {
-  color: #c69ed2;
-}
-.btn-igual {
-  background-color: #894197;
-  color: #fffffe;
-}
-.btn:active {
-  background-color: #5e4858;
-}
-.btn-igual:active {
-  background-color: #a973b0 !important;
-}
-.img-btn {
-  width: 30px;
-}
+    font-size: 250%;
+    height: 95vh ; /* VH define que o tamanho é 95/100 da viewport*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  input {
+    font-size: inherit;
+    background-color: gray;
+  }
+  a {
+    cursor: pointer;
+  }
+  #container-calc {
+    --btn_size: 45%;
+    display: flex;
+    flex-direction: column;
+    background-color: #010101;
+    border-radius: 40px;
+    padding: 15px;
+    width: var(--btn_size);
+    height: var(--btn_size);
+  }
+  #container-res {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: red;
+  }
+  #containter-btns-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 70%;
+    margin-top: 7%;
+  }
+  #container-btns {
+    display: flex;
+    flex-flow: wrap;
+    gap: 5px;
+  }
+  .btn {
+    flex: 20%;
+    /*flex: 20%;*/
+    width: calc(var(--btn_size) * 0.5);
+    height: var(--btn_size);
+    border-radius: 50px;
+    background-color: #201921;
+    cursor: pointer;
+    border: none;
+    font-size: inherit;
+  }
+  .btn-num {
+    color: #9fc6ef;
+  }
+  .btn-c {
+    color: #d93229;
+  }
+  .btn-simb {
+    color: #c69ed2;
+  }
+  .btn-igual {
+    background-color: #894197;
+    color: #fffffe;
+  }
+  .btn:active {
+    background-color: #5e4858;
+  }
+  .btn-igual:active {
+    background-color: #a973b0 !important;
+  }
+  .img-btn {
+    width: 30px;
+  }

@@ -1,22 +1,22 @@
 main {
   font-size: 250%;
+  height: 95vh ; /* VH define que o tamanho é 95/100 da viewport*/
   display: flex;
   justify-content: center;
   align-items: center;
-}
-input {
-  font-size: inherit;
-  background-color: gray;
 }
 a {
   cursor: pointer;
 }
 #container-calc {
+  --btn_size: 45%;
   display: flex;
   flex-direction: column;
   background-color: #010101;
   border-radius: 40px;
   padding: 15px;
+  width: var(--btn_size);
+  height: var(--btn_size);
 }
 #container-res {
   display: flex;
@@ -37,11 +37,14 @@ a {
   gap: 5px;
 }
 .btn {
-  flex: 20%;
+  /*flex: 20%;*/
+  width: calc(var(--btn_size) * 0.5);
+  height: var(--btn_size);
   border-radius: 50px;
   background-color: #201921;
   cursor: pointer;
   border: none;
+  font-size: inherit;
 }
 .btn-num {
   color: #9fc6ef;

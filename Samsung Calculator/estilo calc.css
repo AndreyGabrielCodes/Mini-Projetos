@@ -1,13 +1,14 @@
-#container-calc {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translatex(-50%); /*colocado dois para entender o que serve cada o translate*/
-  transform: translatey(-50%);
+#container-calc{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  height: 98vh;
+}
+#calc {
+  margin: auto;
   background-color: #010101;
-  width: calc(10% - 10px);
+  width: calc(70% - 50px);
   height: calc(90% - 50px);
-  border-radius: calc(2% + 50px);
 }
 /*#container-btns {
   display: flex;

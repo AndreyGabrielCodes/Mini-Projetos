@@ -7,13 +7,13 @@
 #calc {
   margin: auto;
   background-color: #010101;
-  width: calc(70% - 50px);
-  height: calc(90% - 50px);
+  height: fit-content;
+  width: fit-content;
 }
-/*#container-btns {
+#container-btns {
   display: flex;
-  gap:; --DEFINIR O GAP
-}*/
+  /*gap:; --DEFINIR O GAP*/
+}
 /*#container-btns-column{
   display: flex;
   flex-direction: column;

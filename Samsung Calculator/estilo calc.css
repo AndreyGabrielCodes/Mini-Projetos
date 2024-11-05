@@ -5,24 +5,17 @@
   height: 98vh;
 }
 #calc {
-  margin: auto;
   background-color: #010101;
-  height: fit-content;
   width: fit-content;
+  height: fit-content;
+  
 }
-#container-btns {
-  display: flex;
-  /*gap:; --DEFINIR O GAP*/
-}
-/*#container-btns-column{
-  display: flex;
-  flex-direction: column;
-}*/
-.btn {
+input {
   background-color: #201921;
   cursor: pointer;
   border: none;
-  border-radius: 50%
+  border-radius: 50%;
+  
 }
 .btn-num {
   color: #9fc6ef;

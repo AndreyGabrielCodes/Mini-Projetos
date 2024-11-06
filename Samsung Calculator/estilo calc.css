@@ -5,6 +5,7 @@
   height: 98vh;
 }
 #calc {
+  display: flex;
   background-color: #010101;
   width: fit-content;
   height: fit-content;
@@ -15,27 +16,29 @@ input {
   cursor: pointer;
   border: none;
   border-radius: 50%;
-  
 }
-.btn-num {
-  color: #9fc6ef;
-}
-.btn-c {
-  color: #d93229;
-}
-.btn-simb {
-  color: #c69ed2;
-}
-.btn-igual {
-  background-color: #894197;
-  color: #fffffe;
-}
-.btn:active {
-  background-color: #5e4858;
-}
-.btn-igual:active {
-  background-color: #a973b0 !important;
-}
+/*.btn{
+
+}*/
+  .btn-num {
+    color: #9fc6ef;
+  }
+  #btn-c {
+    color: #d93229;
+  }
+  .btn-simb {
+    color: #c69ed2;
+  }
+  #btn-igual {
+    background-color: #894197;
+    color: #fffffe;
+  }
+  #btn:active {
+    background-color: #5e4858;
+  }
+  #btn-igual:active {
+    background-color: #a973b0 !important;
+  }
 a {
   cursor: pointer;
 }
